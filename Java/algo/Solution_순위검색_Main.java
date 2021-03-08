@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class Solution_순위검색_Main {
     
     public static void main(String[] args) {
@@ -20,11 +21,34 @@ public class Solution_순위검색_Main {
                         key.append(split[j]);
                     }
                 }
-                System.out.println(i);
+                // System.out.println(i);
+                infos.computeIfAbsent(key.toString(), s-> new ArrayList<>()).add(score);
             }
             
         }
-    
+        for (Map.Entry<String, List<Integer>> entry  : infos.entrySet()) {
+            entry.getValue().sort(null);
+        }
+        int[] answer = new  int[query.length];
+        List<Integer> empty = new ArrayList<>();
+        for (int i = 0; i < query.length; i++) {
+                String[] split = query[i].replaceAll("-", "").split(" and | ");
+                String key = String.join("", split[0], split[1], split[2],split[3]);
+                int score  = Integer.parseInt(split[4]);
+
+                List<Integer> list = infos.getOrDefault(key, empty);
+
+                int s = 0 , e = list.size();
+                while(s<e){
+                    int mid = (s+e) /2;
+                    if(list.get(mid)<score) s = mid+1;
+                    else e =mid;
+                }
+                answer[i] =list.size() -s;
+        }
+        for (Integer integer : answer) {
+            System.out.println(integer);
+        }
     
     }//end of Main
 }
