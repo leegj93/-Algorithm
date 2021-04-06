@@ -10,9 +10,30 @@ public class Solution_광고삽입 {
         int advtime = timeToSecond(adv_time);
         System.out.println("playtime: "+playtime+ ", " + "advtime: "+ advtime);
 
-        long[] play_cnt = new long[logs.length]
-        
+        long[] play_cnt = new long[playtime+1];
+        for (String log : logs) {
+            String[] split = log.split("-");
+            play_cnt[timeToSecond(split[0])]++;
+            System.out.println("log time : "+timeToSecond(split[0]));
+            play_cnt[timeToSecond(split[1])]--;
+        }
+        for (int i = 1; i <= playtime; i++) {
+            play_cnt[i] += play_cnt[i-1];
+        }
+        for (int i = 1; i <= playtime; i++) {
+            play_cnt[i] += play_cnt[i-1];
+        }
+        long maxTime = play_cnt[advtime -1], maxStartTime = 0;
+        for (int i = 0; i+ advtime <= playtime; i++) {
+            long tmp = play_cnt[i +advtime] - play_cnt[i];
 
+            if(tmp >maxTime){
+                maxTime = tmp;
+                maxStartTime = i+1;
+            }
+        }
+        System.out.println(maxStartTime);
+        System.out.println(String.format("%02d:%02d:%02d", maxStartTime / (60 * 60), (maxStartTime / 60) % 60, maxStartTime % 60));
     }
 
     private static int timeToSecond(String time) {

@@ -5,11 +5,37 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
-            "type": "python",
+            "type": "java",
+            "name": "Launch Solution_광고삽입",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
+            "mainClass": "Solution_광고삽입",
+            "projectName": "Algorithm_74ee8c59"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution_순위검색_Main",
+            "request": "launch",
+            "mainClass": "Solution_순위검색_Main",
+            "projectName": "Algorithm_74ee8c59"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Java Program",
+            "request": "launch",
+            "mainClass": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution_메뉴리뉴얼",
+            "request": "launch",
+            "mainClass": "Solution_메뉴리뉴얼",
+            "projectName": "Algorithm_74ee8c59"
         }
     ]
 }

@@ -44,9 +44,9 @@ public class Solution_메뉴리뉴얼 {
             }
             map.put(com, map.getOrDefault(com, 0)+1);
             m=Math.max(m, map.get(com));
-            for (String s : map.keySet()) {
-                System.out.println(s);
-            }
+            // for (String s : map.keySet()) {
+            //     System.out.println(s);
+            // }
             return;
         }
         for (int i = index; i < word.length(); i++) {
